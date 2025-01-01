@@ -93,8 +93,10 @@ class GajiHarianPage extends StatelessWidget {
           itemCount: 7,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(
-                  '${DateTime.now().subtract(Duration(days: index)).toString().split(' ')[0]}'),
+              title: Text(DateTime.now()
+                  .subtract(Duration(days: index))
+                  .toString()
+                  .split(' ')[0]),
               trailing: const Text(
                 'Rp 150.000',
                 style: TextStyle(fontWeight: FontWeight.bold),
