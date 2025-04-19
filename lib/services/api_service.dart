@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:test_saja/models/event_model.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:8012/erp/api_flutter';
+  static const String baseUrl = 'http://10.0.2.2:3000/api/v1';
 
   Future<Map<String, dynamic>> testApi() async {
     try {
@@ -15,18 +15,18 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> login(String nip, String password) async {
+  Future<Map<String, dynamic>> login(String email, String password) async {
     try {
-      print('Attempting login with NIP: $nip');
+      print('Attempting login with NIP: $email');
 
       final response = await http.post(
-        Uri.parse('$baseUrl/login'),
+        Uri.parse('$baseUrl/auth/login'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         body: json.encode({
-          'nip': nip,
+          'email': email,
           'password': password,
         }),
       );
