@@ -17,22 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final _apiService = ApiService();
   bool _isLoading = false;
   String _errorMessage = '';
-// Future<void> _handleLogin() async{
-//           // final userData = response['data'] as Map<String, dynamic>;
-//           final user = UserModel(
-//             id: '1',
-//             nip:  '1',
-//             nama: 'User',
-//             role: 'user',
-//           );
-//   Navigator.pushReplacement(
-//     context,
-//     MaterialPageRoute(
-//       builder: (context) => MainMenuPage(user: user),
-//     ),
-//   );
 
-// }
   Future<void> _handleLogin() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -45,30 +30,28 @@ class _LoginPageState extends State<LoginPage> {
           _usernameController.text,
           _passwordController.text,
         );
-        response['status'] == true;
-        print('Login Response: $response'); // Debug print
-        if (response['status'] == true) {
-          if (response['status'] == true && response['data'] != null) {
-            final userData = response['data'] as Map<String, dynamic>;
-            print(userData);
-            final user = UserModel(
-              id: userData['id_user']?.toString() ?? '1',
-              nip: userData['nip']?.toString() ?? '1',
-              nama: userData['nama']?.toString() ?? 'User',
-              role: userData['role']?.toString() ?? 'user',
-            );
 
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => MainMenuPage(user: user),
-              ),
-            );
-          } else {
-            setState(() {
-              _errorMessage = response['message'] ?? 'Login gagal';
-            });
-          }
+        print('Login Response: $response'); // Debug print
+
+        if (response['status'] == true && response['data'] != null) {
+          final userData = response['data'] as Map<String, dynamic>;
+          final user = UserModel(
+            id: userData['id_user']?.toString() ?? '',
+            nip: userData['nip']?.toString() ?? '',
+            nama: userData['nama']?.toString() ?? 'User',
+            role: userData['role']?.toString() ?? 'user',
+          );
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MainMenuPage(user: user),
+            ),
+          );
+        } else {
+          setState(() {
+            _errorMessage = response['message'] ?? 'Login gagal';
+          });
         }
       } catch (e) {
         setState(() {

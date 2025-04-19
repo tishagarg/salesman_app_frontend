@@ -1,2 +1,0 @@
-D:/app-sales-and-supervisor/android/app/.cxx/Debug/z6039325/armeabi-v7a/CMakeFiles/edit_cache.dir
-D:/app-sales-and-supervisor/android/app/.cxx/Debug/z6039325/armeabi-v7a/CMakeFiles/rebuild_cache.dir
